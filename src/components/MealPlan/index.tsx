@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 
 import ShoppingList from '../ShoppingList';
-import { FreeMealPlan } from '../MealPlans';
+import { FreeMealPlan } from '../../utils/interfaces';
 
 interface MealPlanData {
   mealplan: FreeMealPlan;

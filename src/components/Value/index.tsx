@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { IngredientValues, IngredientValue } from '../MealPlans';
+import { IngredientValues, IngredientValue } from '../../utils/interfaces';
 
 interface Props {
   values?: IngredientValues;

@@ -6,12 +6,16 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import './index.css';
 import App from './App';
 
-const token = sessionStorage.getItem('token');
 const client = new ApolloClient({
   uri: process.env.REACT_APP_GRAPHQL_API_URL,
-  headers: {
-    authorization: `Bearer ${token}`
-  }
+  request: (operation) => {
+    const token = sessionStorage.getItem('token')
+    operation.setContext({
+      headers: {
+        authorization: token ? `Bearer ${token}` : ''
+      }
+    })
+  },
 });
 
 ReactDOM.render(

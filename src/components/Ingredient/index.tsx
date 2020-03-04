@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ShoppingIngredient } from '../MealPlans';
+import { ShoppingIngredient } from '../../utils/interfaces';
 import Value from '../Value';
 
 interface Props {
