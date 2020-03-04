@@ -77,14 +77,13 @@ const MealPlan = () => {
 
   return (
     <div>
-      <h1>Meal plan</h1>
       {loading && <p>Loading...</p>}
       {error && <p>Error :(</p>}
       {data?.mealplan && (
-        <ul>
-          <li>{data?.mealplan.title}</li>
-          <li>{data?.mealplan.description}</li>
-        </ul>
+        <>
+          <h1>{data?.mealplan.title}</h1>
+          <div>{data?.mealplan.description}</div>
+        </>
       )}
       {data?.mealplan && <ShoppingList list={data?.mealplan.shoppingList}/>}
     </div>

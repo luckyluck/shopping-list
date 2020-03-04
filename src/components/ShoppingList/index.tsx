@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 
 import { ShoppingIngredient } from '../MealPlans';
+import Ingredient from '../Ingredient';
 
 interface Props {
   list: ShoppingIngredient[]
@@ -34,9 +35,7 @@ const ShoppingList: React.FunctionComponent<Props> = ({ list = [] }) => {
           <h3>{key}</h3>
           <ul>
             {value.map((item: ShoppingIngredient) => (
-              <li key={item.id}>
-                {item.ingredient.titles.shoppingList}
-              </li>
+              <Ingredient key={item.id} ingredient={item} person={2} value={'metric'}/>
             ))}
           </ul>
         </Fragment>

@@ -37,7 +37,7 @@ interface DualValue {
   value: string;
 }
 
-interface IngredientValue {
+export interface IngredientValue {
   dualValue: DualValue;
   optionalValues: IngredientValue[];
   servingSize: number;
@@ -45,7 +45,7 @@ interface IngredientValue {
   value: string;
 }
 
-interface IngredientValues {
+export interface IngredientValues {
   us: IngredientValue[];
   metric: IngredientValue[];
 }
