@@ -1,0 +1,14 @@
+.Navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Navigation > a {
+  margin: 0 5px;
+}
+
+.ActiveLink {
+  font-weight: bold;
+  text-decoration: none;
+}
