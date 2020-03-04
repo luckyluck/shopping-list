@@ -4,24 +4,24 @@ import { IngredientValues, IngredientValue } from '../MealPlans';
 interface Props {
   values?: IngredientValues;
   person: number;
-  value: 'us'|'metric';
+  system: 'us'|'metric';
 }
 
-const Value: React.FunctionComponent<Props> = ({ values, person, value }) => {
+const Value: React.FunctionComponent<Props> = ({ values, person, system }) => {
   const [item, setItem] = useState<IngredientValue>();
 
   useEffect(() => {
-    if (value === 'us') {
+    if (system === 'us') {
       setItem(values?.us.filter((item: IngredientValue): boolean => item.servingSize === person)[0]);
     } else {
       setItem(values?.metric.filter((item: IngredientValue): boolean => item.servingSize === person)[0]);
     }
-  }, [values, person, value]);
+  }, [values, person, system]);
 
   if (!item) return null;
 
   return (
-    <span> ,{item?.value} {item?.unit}</span>
+    <span>, {item?.value} {item?.unit}</span>
   );
 };
 

@@ -6,13 +6,13 @@ import Value from '../Value';
 interface Props {
   ingredient: ShoppingIngredient;
   person: number;
-  value: 'us'|'metric';
+  system: 'us'|'metric';
 }
 
-const Ingredient: React.FunctionComponent<Props> = ({ ingredient, person, value }) => (
+const Ingredient: React.FunctionComponent<Props> = ({ ingredient, person, system }) => (
   <li>
     {ingredient.ingredient.titles.shoppingList}
-    <Value values={ingredient.values} person={person} value={value}/>
+    <Value values={ingredient.values} person={person} system={system}/>
   </li>
 );
 
