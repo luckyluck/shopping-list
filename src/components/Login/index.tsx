@@ -23,7 +23,7 @@ const Login = () => {
       setError('Check your form fields');
     } else {
       fetch(
-        'https://ddapi.production.dietdoctor.com/auth/create',
+        process.env.REACT_APP_AUTH_URL,
         { method: 'POST', body: JSON.stringify({ username, password }) }
         )
         .then(response => response.json())
