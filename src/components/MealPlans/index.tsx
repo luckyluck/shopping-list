@@ -1,8 +1,68 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 
-interface FreeMealPlan {
+interface Titles {
+  admin: string;
+  singular: string;
+  plural: string;
+  shoppingList: string;
+}
+
+interface Ingredient {
+  id: string;
+  titles: Titles;
+  createdAt: string;
+  modifiedAt: string;
+  shoppingSection: string;
+}
+
+interface AlternateIngredient {
+  id: string;
+  beforeName: string;
+  afterName: string;
+  ingredient: Ingredient;
+}
+
+interface AdditionalIngredient {
+  id: string;
+  beforeName: string;
+  afterName: string;
+  ingredient: Ingredient;
+}
+
+interface DualValue {
+  unit: string;
+  value: string;
+}
+
+interface IngredientValue {
+  dualValue: DualValue;
+  optionalValues: IngredientValue[];
+  servingSize: number;
+  unit: string;
+  value: string;
+}
+
+interface IngredientValues {
+  us: IngredientValue[];
+  metric: IngredientValue[];
+}
+
+export interface ShoppingIngredient {
+  id: string;
+  optional: boolean;
+  beforeName: string;
+  afterName: string;
+  shoppingSection: string;
+  alternateIngredients: AlternateIngredient[];
+  additionalIngredients: AdditionalIngredient[];
+  values?: IngredientValues;
+  ingredient: Ingredient;
+}
+
+export interface FreeMealPlan {
   id: string;
   userAuthor: string;
   title: string;
@@ -18,7 +78,7 @@ interface FreeMealPlan {
   strictness: any;
   tags: any[];
   schedule: any;
-  shoppingList: any;
+  shoppingList: ShoppingIngredient[];
   slug: string;
   authors: any;
 }
@@ -54,7 +114,9 @@ const MealPlans = () => {
       <ul>
         {data?.freeMealplans.map(({ id, title }: FreeMealPlan) => (
           <li key={id}>
-            {title}
+            <NavLink to={`/meal-plans/${id}`}>
+              {title}
+            </NavLink>
           </li>
         ))}
       </ul>
