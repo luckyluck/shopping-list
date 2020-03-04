@@ -2,14 +2,14 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Login from './components/Login';
-import ShoppingList from './components/ShoppingList';
+import MealPlans from './components/MealPlans';
 
 function App() {
   return (
     <Router>
       <Switch>
         <Route path={'/'} exact>
-          <ShoppingList/>
+          <MealPlans/>
         </Route>
         <Route path={'/login'} exact>
           <Login/>
