@@ -26,11 +26,20 @@ const Login = () => {
         process.env.REACT_APP_AUTH_URL,
         { method: 'POST', body: JSON.stringify({ username, password }) }
         )
-        .then(response => response.json())
+        .then(response => {
+          if (response.status === 200) {
+            return response.json();
+          } else if (response.status === 401) {
+            throw new Error('Invalid credentials');
+          } else {
+            throw new Error('Something went wrong');
+          }
+        })
         .then(({ token }) => {
           sessionStorage.setItem('token', token);
           history.push('/');
-        });
+        })
+        .catch(e => setError(e.message));
     }
   };
 
